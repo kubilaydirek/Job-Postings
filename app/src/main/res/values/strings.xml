@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Job Postings</string>
+    <string name="kullanici_adi">Kullanıcı Adı</string>
+    <string name="email">Email</string>
+    <string name="sifre">Şifre</string>
+    <string name="sifre_tekrari">Şifre Tekrarı</string>
+    <string name="kayit_ol">KAYIT OL</string>
+</resources>
