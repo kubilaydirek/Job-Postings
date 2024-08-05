@@ -23,7 +23,7 @@ fun HomeScene(
 ) {
 
     Scaffold(topBar = {
-        TopAppBar(title = { Text("Job Postings") })
+        TopAppBar(title = { Text("Anasayfa") })
     }, content = {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -33,7 +33,8 @@ fun HomeScene(
             Text(text = "Home Screen")
         }
     }, bottomBar = {
-        BottomNavigation(onNavigateToHome = { onNavigateToHome.invoke() },
+        BottomNavigation(
+            onNavigateToHome = { onNavigateToHome.invoke() },
             onNavigateToProfile = { onNavigateToProfile.invoke() },
             selectedItem = BottomNavItem.Home
         )
