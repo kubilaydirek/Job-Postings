@@ -10,14 +10,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 
 @Composable
-fun BottomNavigation(navController: NavController) {
+fun BottomNavigation(
+    onNavigateToHome: () -> Unit,
+    onNavigateToProfile: () -> Unit,
+) {
 
     val items = listOf(
         BottomNavItem.Home, BottomNavItem.Profile
     )
+
     NavigationBar {
         items.forEach { item ->
-            AddItem(screen = item, navController)
+            AddItem(
+                screen = item,
+                onNavigateToHome = { onNavigateToHome.invoke() },
+                onNavigateToProfile = { onNavigateToProfile.invoke() })
 
         }
     }
@@ -27,14 +34,15 @@ fun BottomNavigation(navController: NavController) {
 @Composable
 fun RowScope.AddItem(
     screen: BottomNavItem,
-    navController: NavController,
+    onNavigateToHome: () -> Unit,
+    onNavigateToProfile: () -> Unit,
 ) {
     NavigationBarItem(
         selected = true,
         onClick = {
             when (screen) {
-                is BottomNavItem.Home -> navController.navigate("home")
-                is BottomNavItem.Profile -> navController.navigate("profile")
+                is BottomNavItem.Home -> onNavigateToHome.invoke()
+                is BottomNavItem.Profile -> onNavigateToProfile.invoke()
             }
         },
         icon = { Icon(painter = painterResource(id = screen.icon), contentDescription = "") },

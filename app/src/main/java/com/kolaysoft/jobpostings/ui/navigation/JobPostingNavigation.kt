@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kolaysoft.jobpostings.ui.screen.home.HomeScene
+import com.kolaysoft.jobpostings.ui.screen.home.navigation.bottomNavigation
 import com.kolaysoft.jobpostings.ui.screen.login.LoginScene
 import com.kolaysoft.jobpostings.ui.screen.profile.ProfileScene
 import com.kolaysoft.jobpostings.ui.screen.register.RegisterScene
@@ -37,11 +38,6 @@ fun JobPostingNavigation(
                 modifier = modifier,
             )
         }
-        composable(NavigationEnum.HOME.name) {
-            HomeScene(navController)
-        }
-        composable(NavigationEnum.PROFILE.name) {
-            ProfileScene(navController)
-        }
+        bottomNavigation(navController)
     }
 }

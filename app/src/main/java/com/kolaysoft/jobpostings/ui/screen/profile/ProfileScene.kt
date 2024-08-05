@@ -15,7 +15,10 @@ import com.kolaysoft.jobpostings.ui.screen.home.bottom_navigation.BottomNavigati
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileScene(navController: NavController) {
+fun ProfileScene(
+    onNavigateToHome: () -> Unit,
+    onNavigateToProfile: () -> Unit,
+) {
 
     Scaffold(
         content = {
@@ -27,7 +30,11 @@ fun ProfileScene(navController: NavController) {
                 Text(text = "Profil")
             }
         },
-        bottomBar = { BottomNavigation(navController = navController) }
+        bottomBar = {
+            BottomNavigation(
+                onNavigateToHome = { onNavigateToHome.invoke() },
+                onNavigateToProfile = { onNavigateToProfile.invoke() })
+        }
     )
 
 }

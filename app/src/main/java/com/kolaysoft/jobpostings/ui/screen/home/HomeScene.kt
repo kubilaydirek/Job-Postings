@@ -18,7 +18,8 @@ import com.kolaysoft.jobpostings.ui.screen.home.bottom_navigation.BottomNavigati
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScene(
-    navController: NavController
+    onNavigateToHome: () -> Unit,
+    onNavigateToProfile: () -> Unit,
 ) {
 
     Scaffold(
@@ -34,7 +35,11 @@ fun HomeScene(
                 Text(text = "Home Screen")
             }
         },
-        bottomBar = { BottomNavigation(navController) }
+        bottomBar = {
+            BottomNavigation(
+                onNavigateToHome = { onNavigateToHome.invoke() },
+                onNavigateToProfile = { onNavigateToProfile.invoke() })
+        }
     )
 
 }
