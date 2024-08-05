@@ -37,7 +37,11 @@ import com.kolaysoft.jobpostings.ui.navigation.NavigationEnum
 import com.kolaysoft.jobpostings.utils.Resource
 
 @Composable
-fun LoginScene(navController: NavController, modifier: Modifier) {
+fun LoginScene(
+    onNavigateToHome: ()-> Unit,
+    onNavigateToRegister: ()-> Unit,
+    modifier: Modifier,
+) {
     val viewModel: LoginViewModel = hiltViewModel()
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
@@ -51,9 +55,7 @@ fun LoginScene(navController: NavController, modifier: Modifier) {
         if (loginResult.value is Resource.Error) {
             snackbarHostState.showSnackbar(message = loginResult.value.message ?: "Giriş Yapılamadı")
         } else if (loginResult.value is Resource.Success && loginResult.value.data?.idToken != "") {
-            navController.navigate(NavigationEnum.HOME.name) {
-                popUpTo(NavigationEnum.LOGIN.name) { inclusive = true }
-            }
+            onNavigateToHome.invoke()
         }
     }
 
@@ -112,7 +114,9 @@ fun LoginScene(navController: NavController, modifier: Modifier) {
                         .weight(0.3f)
                 )
             }
-            TextButton(onClick = { navController.navigate(NavigationEnum.REGISTER.name) }) {
+            TextButton(
+                onClick = onNavigateToRegister
+            ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(text = stringResource(R.string.kayit_olmak_icin))
                     Text(

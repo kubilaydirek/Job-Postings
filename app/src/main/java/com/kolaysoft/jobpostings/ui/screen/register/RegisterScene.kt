@@ -33,7 +33,10 @@ import com.kolaysoft.jobpostings.ui.components.JopPageCircleProgressIndicator
 import com.kolaysoft.jobpostings.utils.Resource
 
 @Composable
-fun RegisterScene(modifier: Modifier, navController: NavController) {
+fun RegisterScene(
+    modifier: Modifier,
+    onClikpopBackStack: ()-> Unit
+) {
     val registerViewModel: RegisterViewModel = hiltViewModel()
     val username = remember { mutableStateOf("") }
     val email = remember { mutableStateOf("") }
@@ -54,7 +57,7 @@ fun RegisterScene(modifier: Modifier, navController: NavController) {
                 message = registerUiState.value.message ?: "Beklenmedik bir hata oluştu"
             )
         } else if (registerUiState.value is Resource.Success && registerUiState.value.data?.idToken != "") {
-            navController.popBackStack()
+            onClikpopBackStack.invoke()
         }
     }
 
