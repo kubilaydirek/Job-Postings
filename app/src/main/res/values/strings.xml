@@ -5,4 +5,9 @@
     <string name="sifre">Şifre</string>
     <string name="sifre_tekrari">Şifre Tekrarı</string>
     <string name="kayit_ol">KAYIT OL</string>
+    <string name="giris_yap">Giriş Yap</string>
+    <string name="veya">veya</string>
+    <string name="kayit_olmak_icin">"Kayıt olmak için "</string>
+    <string name="tiklayin">tıklayın</string>
+
 </resources>

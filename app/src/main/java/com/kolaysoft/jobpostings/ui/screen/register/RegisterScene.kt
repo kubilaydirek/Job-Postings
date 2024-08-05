@@ -3,14 +3,13 @@ package com.kolaysoft.jobpostings.ui.screen.register
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -22,26 +21,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.kolaysoft.jobpostings.R
 import com.kolaysoft.jobpostings.ui.components.JobTextField
 import com.kolaysoft.jobpostings.ui.components.JopPageCircleProgressIndicator
 import com.kolaysoft.jobpostings.utils.Resource
 
 @Composable
-fun RegisterScene(modifier: Modifier) {
+fun RegisterScene(modifier: Modifier, navController: NavController) {
     val registerViewModel: RegisterViewModel = hiltViewModel()
     val username = remember { mutableStateOf("") }
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
-    val passwordRetry = remember { mutableStateOf("") }
 
     val usernameError = remember { mutableStateOf(false) }
     val emailError = remember { mutableStateOf(false) }
     val passwordError = remember { mutableStateOf(false) }
-    val passwordRetryError = remember { mutableStateOf(false) }
 
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -53,6 +53,8 @@ fun RegisterScene(modifier: Modifier) {
             snackbarHostState.showSnackbar(
                 message = registerUiState.value.message ?: "Beklenmedik bir hata oluştu"
             )
+        } else if (registerUiState.value is Resource.Success && registerUiState.value.data?.idToken != "") {
+            navController.popBackStack()
         }
     }
 
@@ -77,7 +79,8 @@ fun RegisterScene(modifier: Modifier) {
                 fieldValue = email,
                 labelText = stringResource(R.string.email),
                 modifier = modifier,
-                showError = emailError.value
+                showError = emailError.value,
+                keyboardType = KeyboardType.Email
             )
             JobTextField(
                 fieldValue = password,
@@ -85,13 +88,6 @@ fun RegisterScene(modifier: Modifier) {
                 isPassword = true,
                 modifier = modifier,
                 showError = passwordError.value
-            )
-            JobTextField(
-                fieldValue = passwordRetry,
-                labelText = stringResource(R.string.sifre_tekrari),
-                isPassword = true,
-                modifier = modifier,
-                showError = passwordRetryError.value
             )
             Spacer(modifier = modifier.height(30.dp))
             Button(modifier = modifier.width(300.dp), onClick = {

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.kolaysoft.jobpostings.data.RepositoryImp.LoginRepositoryImp
-import com.kolaysoft.jobpostings.data.model.register.ApiErrorResponse
+import com.kolaysoft.jobpostings.data.model.ApiErrorResponse
 import com.kolaysoft.jobpostings.data.model.register.RegisterRequestData
 import com.kolaysoft.jobpostings.data.model.register.RegisterResponseData
 import com.kolaysoft.jobpostings.utils.Resource
@@ -33,7 +33,12 @@ class RegisterViewModel @Inject constructor(private val repository: LoginReposit
                     val apiErrorResponse = errorBody?.let {
                         Gson().fromJson(it, ApiErrorResponse::class.java)
                     }
-                    val errorMessage = apiErrorResponse?.error?.message ?: "Hata içeriği yok"
+                    var errorMessage = apiErrorResponse?.error?.message!!
+                    if (errorMessage == "INVALID_EMAIL") {
+                        errorMessage = "Geçersiz eposta"
+                    } else if (errorMessage == "EMAIL_EXISTS") {
+                        errorMessage = "Eposta zaten kullanılmaktadır"
+                    }
                     _uiRegisterState.value = Resource.Error(errorMessage)
                 }
             } catch (e: Exception) {

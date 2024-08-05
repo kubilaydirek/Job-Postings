@@ -1,4 +1,4 @@
-package com.kolaysoft.jobpostings.data.model.register
+package com.kolaysoft.jobpostings.data.model
 
 data class ApiErrorResponse(
     val error: ErrorDetail

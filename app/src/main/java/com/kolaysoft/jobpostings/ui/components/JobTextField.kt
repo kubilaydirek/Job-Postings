@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,7 +37,8 @@ fun JobTextField(
     isPassword: Boolean = false,
     modifier: Modifier,
     errorMsg: String = "Bu alan boş bırakılamaz",
-    showError: Boolean = false
+    showError: Boolean = false,
+    keyboardType: KeyboardType = KeyboardType.Text
 
 ) {
     var passwordVisible by rememberSaveable { mutableStateOf(true) }
@@ -60,8 +63,9 @@ fun JobTextField(
                 }
             },
             modifier = modifier.padding(10.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
 
-            )
+        )
         if (showError) {
             Spacer(modifier = modifier.height(10.dp))
             Text(text = errorMsg, style = TextStyle(color = Color.Red), modifier = modifier.padding(10.dp, 0.dp))
