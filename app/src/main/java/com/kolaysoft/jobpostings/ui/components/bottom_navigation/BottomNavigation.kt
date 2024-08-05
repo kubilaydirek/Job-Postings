@@ -1,4 +1,4 @@
-package com.kolaysoft.jobpostings.ui.screen.home.bottom_navigation
+package com.kolaysoft.jobpostings.ui.components.bottom_navigation
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon

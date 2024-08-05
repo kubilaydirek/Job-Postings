@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.kolaysoft.jobpostings.ui.screen.home.bottom_navigation.BottomNavigation
+import com.kolaysoft.jobpostings.ui.components.bottom_navigation.BottomNavigation
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

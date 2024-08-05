@@ -1,4 +1,4 @@
-package com.kolaysoft.jobpostings.ui.screen.home.bottom_navigation
+package com.kolaysoft.jobpostings.ui.components.bottom_navigation
 
 import com.kolaysoft.jobpostings.R
 
