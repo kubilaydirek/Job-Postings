@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.kolaysoft.jobpostings.ui.components.BottomNavigation.BottomNavItem
 import com.kolaysoft.jobpostings.ui.components.BottomNavigation.BottomNavigation
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -21,24 +22,21 @@ fun HomeScene(
     onNavigateToProfile: () -> Unit,
 ) {
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text("Job Postings") })
-        },
-        content = {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(text = "Home Screen")
-            }
-        },
-        bottomBar = {
-            BottomNavigation(
-                onNavigateToHome = { onNavigateToHome.invoke() },
-                onNavigateToProfile = { onNavigateToProfile.invoke() })
+    Scaffold(topBar = {
+        TopAppBar(title = { Text("Job Postings") })
+    }, content = {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Home Screen")
         }
-    )
+    }, bottomBar = {
+        BottomNavigation(onNavigateToHome = { onNavigateToHome.invoke() },
+            onNavigateToProfile = { onNavigateToProfile.invoke() },
+            selectedItem = BottomNavItem.Home
+        )
+    })
 
 }

@@ -1,11 +1,16 @@
 package com.kolaysoft.jobpostings.ui.components.BottomNavigation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults.containerColor
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -13,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun BottomNavigation(
     onNavigateToHome: () -> Unit,
     onNavigateToProfile: () -> Unit,
+    selectedItem: BottomNavItem
 ) {
 
     val items = listOf(
@@ -24,7 +30,8 @@ fun BottomNavigation(
             AddItem(
                 screen = item,
                 onNavigateToHome = { onNavigateToHome.invoke() },
-                onNavigateToProfile = { onNavigateToProfile.invoke() })
+                onNavigateToProfile = { onNavigateToProfile.invoke() }, selectedItem = selectedItem == item
+            )
 
         }
     }
@@ -36,9 +43,10 @@ fun RowScope.AddItem(
     screen: BottomNavItem,
     onNavigateToHome: () -> Unit,
     onNavigateToProfile: () -> Unit,
+    selectedItem: Boolean
 ) {
     NavigationBarItem(
-        selected = true,
+        selected = selectedItem,
         onClick = {
             when (screen) {
                 is BottomNavItem.Home -> onNavigateToHome.invoke()
@@ -47,7 +55,8 @@ fun RowScope.AddItem(
         },
         icon = { Icon(painter = painterResource(id = screen.icon), contentDescription = "") },
         label = { Text(text = screen.title) },
-        alwaysShowLabel = true
+        alwaysShowLabel = selectedItem,
+        colors = NavigationBarItemDefaults.colors(selectedIconColor = Color.White, indicatorColor = Color.Gray),
     )
 
 }
@@ -55,5 +64,9 @@ fun RowScope.AddItem(
 @Preview
 @Composable
 fun PreviewBottomNavigation() {
-    BottomNavigation(onNavigateToHome = {}, onNavigateToProfile = {})
+    BottomNavigation(
+        onNavigateToHome = { /*TODO*/ },
+        onNavigateToProfile = { /*TODO*/ },
+        selectedItem = BottomNavItem.Home
+    )
 }

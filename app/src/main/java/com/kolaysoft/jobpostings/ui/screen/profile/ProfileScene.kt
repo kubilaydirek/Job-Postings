@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.kolaysoft.jobpostings.ui.components.BottomNavigation.BottomNavItem
 import com.kolaysoft.jobpostings.ui.components.BottomNavigation.BottomNavigation
 
 
@@ -19,21 +20,20 @@ fun ProfileScene(
     onNavigateToProfile: () -> Unit,
 ) {
 
-    Scaffold(
-        content = {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(text = "Profil")
-            }
-        },
-        bottomBar = {
-            BottomNavigation(
-                onNavigateToHome = { onNavigateToHome.invoke() },
-                onNavigateToProfile = { onNavigateToProfile.invoke() })
+    Scaffold(content = {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = "Profil")
         }
-    )
+    }, bottomBar = {
+        BottomNavigation(
+            onNavigateToHome = { onNavigateToHome.invoke() },
+            onNavigateToProfile = { onNavigateToProfile.invoke() },
+            selectedItem = BottomNavItem.Profile
+        )
+    })
 
 }
