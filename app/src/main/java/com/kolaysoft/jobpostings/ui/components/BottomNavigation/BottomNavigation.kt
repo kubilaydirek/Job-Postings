@@ -1,4 +1,4 @@
-package com.kolaysoft.jobpostings.ui.components.bottom_navigation
+package com.kolaysoft.jobpostings.ui.components.BottomNavigation
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
@@ -7,7 +7,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
-import androidx.navigation.NavController
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun BottomNavigation(
@@ -50,4 +50,10 @@ fun RowScope.AddItem(
         alwaysShowLabel = true
     )
 
+}
+
+@Preview
+@Composable
+fun PreviewBottomNavigation() {
+    BottomNavigation(onNavigateToHome = {}, onNavigateToProfile = {})
 }
