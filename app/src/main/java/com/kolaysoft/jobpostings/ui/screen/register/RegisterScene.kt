@@ -35,7 +35,7 @@ import com.kolaysoft.jobpostings.utils.Resource
 @Composable
 fun RegisterScene(
     modifier: Modifier,
-    onClikpopBackStack: ()-> Unit
+    onClickPopBackStack: ()-> Unit
 ) {
     val registerViewModel: RegisterViewModel = hiltViewModel()
     val username = remember { mutableStateOf("") }
@@ -57,7 +57,7 @@ fun RegisterScene(
                 message = registerUiState.value.message ?: "Beklenmedik bir hata oluştu"
             )
         } else if (registerUiState.value is Resource.Success && registerUiState.value.data?.idToken != "") {
-            onClikpopBackStack.invoke()
+            onClickPopBackStack.invoke()
         }
     }
 

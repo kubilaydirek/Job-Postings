@@ -38,13 +38,13 @@ import com.kolaysoft.jobpostings.utils.Resource
 
 @Composable
 fun LoginScene(
-    onNavigateToHome: ()-> Unit,
-    onNavigateToRegister: ()-> Unit,
+    onNavigateToHome: () -> Unit,
+    onNavigateToRegister: () -> Unit,
     modifier: Modifier,
 ) {
     val viewModel: LoginViewModel = hiltViewModel()
-    val username = remember { mutableStateOf("") }
-    val password = remember { mutableStateOf("") }
+    val username = remember { mutableStateOf("kubilay@gmail.com") }
+    val password = remember { mutableStateOf("123123") }
 
     val usernameError = remember { mutableStateOf(false) }
     val passwordError = remember { mutableStateOf(false) }
@@ -115,7 +115,7 @@ fun LoginScene(
                 )
             }
             TextButton(
-                onClick = onNavigateToRegister
+                onClick = { onNavigateToRegister.invoke() }
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(text = stringResource(R.string.kayit_olmak_icin))

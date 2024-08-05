@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kolaysoft.jobpostings.ui.screen.home.HomeScene
 import com.kolaysoft.jobpostings.ui.screen.login.LoginScene
+import com.kolaysoft.jobpostings.ui.screen.profile.ProfileScene
 import com.kolaysoft.jobpostings.ui.screen.register.RegisterScene
 
 @Composable
@@ -32,12 +33,15 @@ fun JobPostingNavigation(
         }
         composable(NavigationEnum.REGISTER.name) {
             RegisterScene(
-                onClikpopBackStack = { navController.popBackStack() },
+                onClickPopBackStack = { navController.popBackStack() },
                 modifier = modifier,
             )
         }
         composable(NavigationEnum.HOME.name) {
-            HomeScene()
+            HomeScene(navController)
+        }
+        composable(NavigationEnum.PROFILE.name) {
+            ProfileScene(navController)
         }
     }
 }
