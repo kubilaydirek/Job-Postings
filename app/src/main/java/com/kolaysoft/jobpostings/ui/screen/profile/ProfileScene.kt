@@ -11,6 +11,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.kolaysoft.jobpostings.R
 import com.kolaysoft.jobpostings.ui.components.BottomNavigation.BottomNavItem
 import com.kolaysoft.jobpostings.ui.components.BottomNavigation.BottomNavigation
 
@@ -24,7 +26,7 @@ fun ProfileScene(
 ) {
 
     Scaffold(topBar = {
-        TopAppBar(title = { Text("Profil") })
+        TopAppBar(title = { Text(stringResource(R.string.profil)) })
     }, content = {
         Column(
             modifier = Modifier.fillMaxSize(),

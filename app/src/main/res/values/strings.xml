@@ -9,5 +9,7 @@
     <string name="veya">veya</string>
     <string name="kayit_olmak_icin">"Kayıt olmak için "</string>
     <string name="tiklayin">tıklayın</string>
+    <string name="anasayfa">Anasayfa</string>
+    <string name="profil">Profil</string>
 
 </resources>

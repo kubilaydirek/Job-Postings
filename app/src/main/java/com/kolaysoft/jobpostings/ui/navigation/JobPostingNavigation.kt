@@ -39,6 +39,5 @@ fun JobPostingNavigation(
         }
         bottomNavigation(navController);
         profileNavigation(navController)
-
     }
 }

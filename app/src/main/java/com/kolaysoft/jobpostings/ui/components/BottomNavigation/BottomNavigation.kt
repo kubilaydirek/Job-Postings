@@ -65,8 +65,8 @@ fun RowScope.AddItem(
 @Composable
 fun PreviewBottomNavigation() {
     BottomNavigation(
-        onNavigateToHome = { /*TODO*/ },
-        onNavigateToProfile = { /*TODO*/ },
+        onNavigateToHome = { },
+        onNavigateToProfile = { },
         selectedItem = BottomNavItem.Home
     )
 }
