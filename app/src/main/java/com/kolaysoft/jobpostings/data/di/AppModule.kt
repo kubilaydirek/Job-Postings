@@ -23,6 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 import javax.inject.Singleton
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
@@ -38,9 +39,9 @@ object AppModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://identitytoolkit.googleapis.com/") // Doğru URL'yi kontrol edin
+            .baseUrl("https://identitytoolkit.googleapis.com/")
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create()) // JSON dönüşümü için
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
